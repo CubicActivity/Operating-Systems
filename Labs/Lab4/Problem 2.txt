@@ -1,0 +1,87 @@
+Околина за решавање:
+
+Ubuntu | Playgrounds | Killercoda
+
+Излезот од извршувањата на командите го ставате во формата подолу.
+
+Потребно е да се направи апликација наречена ServerRoomTemperature. За таа цел има сенозори кои прибираат податоци за температурата во различни серверски соби, се со цел да се мониторира температурата во податочниот центар.
+
+Барања на задачата:
+
+Да се направат два Docker Compose сервиси. 
+
+    Да се креира Јава сервис TemperatureSensor.
+        запишува 5 нови бројки во датотека temperature.txt. 
+            Дали ќе ги запишувате бројките во датотеката со празно место или нов ред е оставено на Вас.
+        новите бројки се рандом генрирани во рангот [5, 50].
+        запишува нови бројки на секој 30 секунди.
+     Да се креира Јава сервис TemperatureMonitor 
+        прави average на вредностите од temperature.txt
+        запишува во датотека temperaturelevel.txt колкаво е нивото на температурата.
+            Дали ќе ги запишувате нивото во датотеката со празно место или нов ред е оставено на Вас.
+        нивото се пресметува според просечната температура и може да е Low, Medium и High. Low (5 °C до 19 °C), Medium (19 °C to 35 °C), High (над 35 °C)
+        запишува колкаво е нивото на секој 60 секунди.
+
+Во формата поставете ги командите и излезот од командна линија.
+
+Исто така во формата прикачете ги TemperatureSensor.java, TemperatureMonitor.java, Dockerfiles, docker-compose.yml.
+
+После завршувањето на задачата стопирајте ги контејнерите! 
+
+
+-----------------------------------------------------------------------------------------
+
+Execution Environment:
+Ubuntu | Playgrounds | Killercoda
+
+You should place the output from the execution of all commands in the form below.
+
+You need to create an application called ServerRoomTemperature. The purpose is to simulate sensors collecting temperature data from different server rooms in order to monitor the temperature in a data center.
+
+Task requirements:
+
+Create two Docker Compose services.
+
+1. Create a Java service named TemperatureSensor that:
+
+    Writes 5 new numbers to a file called temperature.txt.
+
+    You can choose whether to separate the numbers with spaces or new lines.
+
+    The new numbers are randomly generated within the range [5, 50].
+
+    It writes new numbers every 30 seconds.
+
+2. Create a Java service named TemperatureMonitor that:
+
+    Calculates the average of the values in temperature.txt.
+
+    Writes the temperature level to a file called temperaturelevel.txt.
+
+    You can choose whether to separate the levels with spaces or new lines.
+
+    The temperature level is calculated based on the average value:
+
+        Low (5°C to 19°C)
+
+        Medium (19°C to 35°C)
+
+        High (above 35°C)
+
+    It writes the level every 60 seconds.
+
+In the form, include:
+
+    All terminal commands you used and their output.
+
+    Upload the following files:
+
+        TemperatureSensor.java
+
+        TemperatureMonitor.java
+
+        Both Dockerfiles
+
+        docker-compose.yml
+
+After finishing the task, stop the containers!

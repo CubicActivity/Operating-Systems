@@ -1,0 +1,209 @@
+Одкако направив модификации на фајловите,
+може да се изврши docker-compose up -d
+
+ubuntu:~/server-room$ docker exec server-room_temperature-sensor_1 ls -la /data
+total 12
+drwxr-xr-x 2 root root 4096 May  4 09:43 .
+drwxr-xr-x 1 root root 4096 May  4 09:43 ..
+-rw-r--r-- 1 root root   62 May  4 09:45 temperature.txt
+ubuntu:~/server-room$ docker exec server-room_temperature-monitor_1 ls -la /levels
+total 12
+drwxr-xr-x 2 root root 4096 May  4 09:43 .
+drwxr-xr-x 1 root root 4096 May  4 09:43 ..
+-rw-r--r-- 1 root root    4 May  4 09:44 temperaturelevel.txt
+ubuntu:~/server-room$ docker exec server-room_temperature-sensor_1 cat /data/temperature.txt
+29 13 25 15 33
+10 15 7 17 13
+8 35 12 24 21
+19 24 17 35 30
+19 19 28 33 27
+ubuntu:~/server-room$ docker exec server-room_temperature-monitor_1 cat /levels/temperaturelevel.txt
+Medium
+
+ubuntu:~/server-room$ docker-compose down -v
+Stopping server-room_temperature-monitor_1 ... done
+Stopping server-room_temperature-sensor_1  ... done
+Removing server-room_temperature-monitor_1 ... done
+Removing server-room_temperature-sensor_1  ... done
+Removing network server-room_temperature-level-network
+Removing volume server-room_temperature
+Removing volume server-room_temperaturelevel
+
+
+ubuntu:~/server-room$ docker-compose up -d --build
+Building temperature-sensor
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  3.584kB
+Step 1/6 : FROM openjdk:11-jdk-slim
+ ---> 8e687a82603f
+Step 2/6 : WORKDIR /app
+ ---> Using cache
+ ---> 2fc0a22b4b61
+Step 3/6 : COPY TemperatureSensor.java .
+ ---> Using cache
+ ---> ae46fd068444
+Step 4/6 : RUN javac TemperatureSensor.java
+ ---> Using cache
+ ---> b63b03ab84ff
+Step 5/6 : RUN mkdir -p /data
+ ---> Using cache
+ ---> 6f7078fed1d9
+Step 6/6 : CMD ["java", "TemperatureSensor"]
+ ---> Using cache
+ ---> 055e9b72afd6
+Successfully built 055e9b72afd6
+Successfully tagged server-room_temperature-sensor:latest
+Building temperature-monitor
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  4.608kB
+Step 1/6 : FROM openjdk:11-jdk-slim
+ ---> 8e687a82603f
+Step 2/6 : WORKDIR /app
+ ---> Using cache
+ ---> 2fc0a22b4b61
+Step 3/6 : COPY TemperatureMonitor.java .
+ ---> Using cache
+ ---> 874e37903ff0
+Step 4/6 : RUN javac TemperatureMonitor.java
+ ---> Using cache
+ ---> 657a25f8391e
+Step 5/6 : RUN mkdir -p /levels
+ ---> Using cache
+ ---> f7fb70139db1
+Step 6/6 : CMD ["java", "TemperatureMonitor"]
+ ---> Using cache
+ ---> d2edf6978717
+Successfully built d2edf6978717
+Successfully tagged server-room_temperature-monitor:latest
+server-room_temperature-sensor_1 is up-to-date
+server-room_temperature-monitor_1 is up-to-date
+ubuntu:~/server-room$ docker network ls
+NETWORK ID     NAME                                    DRIVER    SCOPE
+d424b7a73d25   bridge                                  bridge    local
+fc87403ad28d   host                                    host      local
+7276f1313eaf   none                                    null      local
+4092bc5d2300   server-room_temperature-level-network   bridge    local
+ubuntu:~/server-room$ docker network inspect server-room_temperature-level-network
+[
+    {
+        "Name": "server-room_temperature-level-network",
+        "Id": "4092bc5d2300e7a212e17047b27fc30456503b22235c7cac5f8f7789bd864e00",
+        "Created": "2025-05-04T09:51:13.426294809Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.19.0.0/16",
+                    "Gateway": "172.19.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": true,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "2e831e77685edbd9fd954f56a47defde4c63f97682d7aef49c5f6f64bbac3f6d": {
+                "Name": "server-room_temperature-monitor_1",
+                "EndpointID": "7e6c0be0ef68ccc5ae8bfecca3611535d5530b245bd86f3c1ce674f6f8d6082d",
+                "MacAddress": "02:42:ac:13:00:03",
+                "IPv4Address": "172.19.0.3/16",
+                "IPv6Address": ""
+            },
+            "d1b20fd94cc4bb242dcccf7974d3ee6aaf12adacca9c47feca865baba21399a8": {
+                "Name": "server-room_temperature-sensor_1",
+                "EndpointID": "0ff76707e802ddd6a6ea335c3c8319701d7751fadfbe47b97c1e4b34e0320c6a",
+                "MacAddress": "02:42:ac:13:00:02",
+                "IPv4Address": "172.19.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {
+            "com.docker.compose.network": "temperature-level-network",
+            "com.docker.compose.project": "server-room",
+            "com.docker.compose.version": "1.29.2"
+        }
+    }
+]
+
+значи можеме да видиме дека temperature-sensor има ip: 172.19.0.2 на порта 8080
+
+temperature-monitor има ip: 172.19.0.3 на порта 9090
+
+
+
+ubuntu:~/server-room$ docker exec -it server-room_temperature-sensor_1 /bin/bash
+root@00ed9a3262c2:/app# env
+HOSTNAME=00ed9a3262c2
+JAVA_HOME=/usr/local/openjdk-11
+PWD=/app
+HOME=/root
+LANG=C.UTF-8
+MEDIUM_TEMPERATURE=19
+TERM=xterm
+LOW_TEMPERATURE=5
+SHLVL=1
+HIGH_TEMPERATURE=35
+PATH=/usr/local/openjdk-11/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+JAVA_VERSION=11.0.16
+_=/usr/bin/env
+
+
+root@00ed9a3262c2:/app# exit
+exit
+ubuntu:~/server-room$ docker exec -it server-room_temperature-monitor_1 /bin/bash
+root@bc6793610c5a:/app# env
+HOSTNAME=bc6793610c5a
+JAVA_HOME=/usr/local/openjdk-11
+PWD=/app
+HOME=/root
+LANG=C.UTF-8
+MEDIUM_TEMPERATURE=19
+TERM=xterm
+LOW_TEMPERATURE=5
+SHLVL=1
+HIGH_TEMPERATURE=35
+PATH=/usr/local/openjdk-11/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+JAVA_VERSION=11.0.16
+_=/usr/bin/env
+root@bc6793610c5a:/app# exit
+exit
+
+
+ubuntu:~/server-room/monitor$ nano TemperatureMonitor.java
+ubuntu:~/server-room/monitor$ nano Dockerfile
+ubuntu:~/server-room/monitor$ cd ../
+ubuntu:~/server-room$ ls
+docker-compose.yml  monitor  sensor
+ubuntu:~/server-room$ nano docker-compose.yml
+ubuntu:~/server-room$ docker-compose down
+Stopping server-room_temperature-monitor_1 ... done
+Stopping server-room_temperature-sensor_1  ... done
+Removing server-room_temperature-monitor_1 ... done
+Removing server-room_temperature-sensor_1  ... done
+Removing network server-room_temperature-level-network
+ubuntu:~/server-room$ nano docker-compose.yml
+ubuntu:~/server-room$ rm docker-compose.yml
+ubuntu:~/server-room$ touch do
+ubuntu:~/server-room$ rm do
+ubuntu:~/server-room$ touch docker-compose.yml
+ubuntu:~/server-room$ nano docker-compose.yml
+ubuntu:~/server-room$ docker-compose up -d
+Creating network "server-room_temperature-level-network" with driver "bridge"
+Creating server-room_temperature-sensor_1 ... done
+Creating server-room_temperature-monitor_1 ... done
+

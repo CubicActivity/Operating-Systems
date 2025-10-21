@@ -1,0 +1,93 @@
+ubuntu:~$ cd server-room-temperature/
+ubuntu:~/server-room-temperature$ ls
+data  temperature-monitor  temperature-sensor
+ubuntu:~/server-room-temperature$ touch TemperatureSensor.java
+ubuntu:~/server-room-temperature$ nano TemperatureSensor.java
+ubuntu:~/server-room-temperature$ touch TemperatureMonitor.java
+ubuntu:~/server-room-temperature$ nano TemperatureMonitor.java
+ubuntu:~/server-room-temperature$ ls
+TemperatureMonitor.java  data                 temperature-sensor
+TemperatureSensor.java   temperature-monitor
+ubuntu:~/server-room-temperature$ mv TemperatureMonitor.java ./temperature-monitor/        
+ubuntu:~/server-room-temperature$ mv TemperatureSensor.java ./temperature-sensor/
+ubuntu:~/server-room-temperature$ ls
+data  temperature-monitor  temperature-sensor
+
+
+ubuntu:~/server-room-temperature$ ls
+data  temperature-monitor  temperature-sensor
+ubuntu:~/server-room-temperature$ cd temperature-monitor/
+ubuntu:~/server-room-temperature/temperature-monitor$ touch Dockerfile
+ubuntu:~/server-room-temperature/temperature-monitor$ nano Dockerfile
+ubuntu:~/server-room-temperature/temperature-monitor$ cd ../
+ubuntu:~/server-room-temperature$ ls
+data  temperature-monitor  temperature-sensor
+ubuntu:~/server-room-temperature$ cd temperature-sensor/
+ubuntu:~/server-room-temperature/temperature-sensor$ touch Dockerfile
+ubuntu:~/server-room-temperature/temperature-sensor$ nano Dockerfile
+ubuntu:~/server-room-temperature/temperature-sensor$ cd ../
+ubuntu:~/server-room-temperature$ ls
+data  temperature-monitor  temperature-sensor
+ubuntu:~/server-room-temperature$ touch docker-compose.yml
+ubuntu:~/server-room-temperature$ nano docker-compose.yml
+ubuntu:~/server-room-temperature$
+
+
+Да се почне сервисот се користи следната команда
+
+ubuntu:~/server-room-temperature$ docker-compose up -d
+Creating network "server-room-temperature_default" with the default driver
+Building temperature-sensor
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  3.584kB
+Step 1/5 : FROM openjdk:11-jdk-slim
+ ---> 8e687a82603f
+Step 2/5 : WORKDIR /app
+ ---> Using cache
+ ---> c5d728ba1905
+Step 3/5 : COPY TemperatureSensor.java .
+ ---> 61f41b609119
+Step 4/5 : RUN javac TemperatureSensor.java
+ ---> Running in 23d1b3542692
+ ---> Removed intermediate container 23d1b3542692
+ ---> 74b69f812feb
+Step 5/5 : CMD ["java", "TemperatureSensor"]
+ ---> Running in 1e37e373c5de
+ ---> Removed intermediate container 1e37e373c5de
+ ---> 478441be230c
+Successfully built 478441be230c
+Successfully tagged server-room-temperature_temperature-sensor:latest
+WARNING: Image for service temperature-sensor was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Building temperature-monitor
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  4.096kB
+Step 1/5 : FROM openjdk:11-jdk-slim
+ ---> 8e687a82603f
+Step 2/5 : WORKDIR /app
+ ---> Using cache
+ ---> c5d728ba1905
+Step 3/5 : COPY TemperatureMonitor.java .
+ ---> cd96b16792ac
+Step 4/5 : RUN javac TemperatureMonitor.java
+ ---> Running in 8af3f1eb1ac2
+ ---> Removed intermediate container 8af3f1eb1ac2
+ ---> 62badc282396
+Step 5/5 : CMD ["java", "TemperatureMonitor"]
+ ---> Running in 4425cd5f6074
+ ---> Removed intermediate container 4425cd5f6074
+ ---> b13e781e947e
+Successfully built b13e781e947e
+Successfully tagged server-room-temperature_temperature-monitor:latest
+WARNING: Image for service temperature-monitor was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Creating server-room-temperature_temperature-sensor_1 ... done
+Creating server-room-temperature_temperature-monitor_1 ... done
+
+
+после ова можеме да ги гледаме и логовите на сервисие преку docker-compose logs -f, и да ги запреме со docker-compose down
+

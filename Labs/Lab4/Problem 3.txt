@@ -1,0 +1,80 @@
+Околина за решавање:
+
+Ubuntu | Playgrounds | Killercoda
+
+Излезот од извршувањата на командите го ставате во формата подолу.
+
+Да се надгради задача 3 - (Docker Compose 1).
+
+Барања:
+1. Креирајте volumes кои што се викаат (temperature, temperaturelevel)
+2. Во temperature се наоѓа temperature.txt а во temperaturelevel se наоѓа temperaturelevel.txt
+3. Креирајте една мрежа со име: temperature-level-network, која го има како network driver: bridge.
+4. Креирајте опкружувачки променливи: LOW_TEMPERATURE, MEDIUM_TEMPERATURE, HIGH_TEMPERATURE.
+ Заменете во Java кодот да се земаат опкружувачките променивли.  
+
+    LOW (LOW_TEMPERATURE, MEDIUM_TEMPERATURE) 
+    MEDIUM (MEDIUM_TEMPERATURE, HIGH_TEMPERATURE) 
+    HIGH (HIGH_TEMPERATURE, INFINITY)
+
+5. Стартувајте го Docker compose.
+6. Во командна линија излистај ја содржината на temperature и temperaturelevel volumes.
+7. Во командна линија погледнете ги IPv4Address на двата контерјнери кои се во temperature-level-network.
+8. Напишете на кои порти од host и кои порти внатре во контејнерот работат сервисите.
+9. Во командна линија испечатете ги опкружувачки променливи на двата сервиси.
+10. Променте ги вредностите на опкружувачки променливи.
+11. Рестартирајте го Docker compose.
+
+Излезот од извршувањата на командите го ставате во формата подолу.
+После завршувањето на задачата, стопирајте ги контејнерите!
+
+-------------------------------------------------------------------------------------------
+
+Execution Environment:
+
+Ubuntu | Playgrounds | Killercoda
+
+You should place the output from the execution of all commands in the form below.
+
+This task is an upgrade of Task 3 - (Docker Compose 1).
+Requirements:
+
+    Create volumes named temperature and temperaturelevel.
+
+    The file temperature.txt should be located inside the temperature volume, and temperaturelevel.txt should be in the temperaturelevel volume.
+
+    Create a network named temperature-level-network with the bridge network driver.
+
+    Create environment variables:
+
+        LOW_TEMPERATURE
+
+        MEDIUM_TEMPERATURE
+
+        HIGH_TEMPERATURE
+
+    Update the Java code to use these environment variables instead of hardcoded values:
+
+        Low: between LOW_TEMPERATURE and MEDIUM_TEMPERATURE
+
+        Medium: between MEDIUM_TEMPERATURE and HIGH_TEMPERATURE
+
+        High: from HIGH_TEMPERATURE to infinity
+
+    Start Docker Compose.
+
+    From the command line, list the contents of the temperature and temperaturelevel volumes.
+
+    From the command line, check the IPv4 addresses of the two containers connected to the temperature-level-network.
+
+    Specify which ports on the host and inside the containers are used by the services.
+
+    From the command line, print the environment variables of both services.
+
+    Change the values of the environment variables.
+
+    Restart Docker Compose.
+
+You should place the output from all command executions in the form below.
+
+After completing the task, stop the containers!

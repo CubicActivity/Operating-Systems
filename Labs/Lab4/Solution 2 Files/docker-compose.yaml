@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  temperature-sensor:
+    build: ./temperature-sensor
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
+
+  temperature-monitor:
+    build: ./temperature-monitor
+    volumes:
+      - ./data:/data
+    depends_on:
+      - temperature-sensor
+    restart: unless-stopped

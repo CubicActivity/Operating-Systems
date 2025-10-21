@@ -1,0 +1,130 @@
+Околина за решавање:
+
+Ubuntu | Playgrounds | Killercoda
+
+Потребно е да се изврши nginx контејнеризација брз база на Debian основа debian:11-slim и да се овозможи хостирање на дадената датотека именувана како products.txt. Следете ги следните чекори еден по еден:
+
+1. Контејнеризацијата направете ја преку интерактивен режим. Именувајте ја новата Docker слика како nginx-product-host-i. 
+
+2. Креирајте и стартувајте нов контејнер nginx-product-host-i-container врз база на новокреираната слика. Овозможете портата 80 на контејнерот да биде достапна преку порта 8080 на домаќинот. По стартувањето, проверете дали контејнерот е активен и дали портите се успешно мапирани.
+
+3. Повторете го креирањето на Docker Image на nginx брз база на Debian основа debian:11-slim, но сега преку Dockerfile. Именувајте ја сликата како nginx-product-host.
+
+4. Креирајте контејнер од новокреираната слика, именувајте го како nginx-product-host-container и овозможете портата 80 на контејнерот да биде достапна преку порта 8081 на домаќинот. По стартувањето, проверете дали контејнерот е активен и дали портите се успешно мапирани.
+
+5. Рачно ископирајте ја датотеката products.txt од хостот во фолдерот /var/www/html/ на двата контејнери (nginx-product-host-container, nginx-product-host-i-container)  со помош на командата docker cp. 
+
+6. Со помош на една од командите wget или curl во домаќинот проверете дали датотеката products.txt е достапна на двете локации http://localhost:8080/products.txt и http://localhost:8081/products.txt. Доколку е успешно, повиците треба да вратат HTTP статус код 200 и да ја преземат датотеката локално во локалниот именик, доколку не е поставена опцијата -o.
+
+7. Доколку претходните чекори успешно ги имплементиравте, направете стопирање и отстранување на двата контејнери nginx-product-host-container и nginx-product-host-i-container.
+
+8. Креирајте нов именик во домаќинот именуван како html. Ископирајте ја датотеката products.txt во новокреираниот именик.
+
+9. Креирајте и стартувајте го контејнерот nginx-product-host-container, но сега потребно е да мапирате volume на тој начин што новокреираниот именик кај домаќинот html ќе се мапира на патеката /var/www/html/ кај контејнерот.
+
+	- внимавајте да не ги заборавите при стартување да овозможете портата 80 на контејнерот да биде достапна преку порта 8081 на домаќинот
+
+10. Проверете дали датотеката е достапна на локација http://localhost:8081/products.txt.
+
+11. Потребно е да се контејнеризира Java апликацијата (ProductsManagement.java) со помош на Dockerfile. Апликацијата овозможува преглед на содржината на датотеката products.txt на попрегледен начин со тоа што ја изминува линија по линија и ги печати сите ќелии во рамки на редицата. Секоја ќелија е одделена со точка-запирка (;).
+
+12. Изградете нова Docker слика врз база на новокреираниот Dockerfile со име products-viewer.
+
+13. При стартувајте, направете мапирање на volume со тоа што именикот кај домаќинот html ќе се мапира на патеката /var/www/html/ кај контејнерот. Името на контејнерот нека биде products-viewer-container.
+
+14. Проверете дали листањето на продуктите преку Java апликацијата е успешно.
+
+15. Изменете го Java кодот, со што променливата path ќе се исчитува од опкружувачката променлива PRODUCT_FILE_PATH. 
+
+16. Стопирајте и отстранете го контејнерот products-viewer-container и стартувајте го пак со тоа што ќе ја додадете вредност на опкружувачката променлива PRODUCT_FILE_PATH со помош на опцијата -e кај docker run командата.
+
+17. Проверете дали успешно ќе се излистаат продуктите во датотеката.
+
+Излезот од извршувањата на сите команди го ставате во формата подолу.
+
+--------------------------------------------------------------------------------------------
+
+Execution Environment:
+Ubuntu | Playgrounds | Killercoda
+
+You need to perform Nginx containerization based on the Debian base image debian:11-slim and enable hosting of the provided file named products.txt. Follow the steps below one by one:
+
+    Perform the containerization in interactive mode. Name the new Docker image nginx-product-host-i.
+
+    Create and start a new container named nginx-product-host-i-container based on the newly created image. Expose port 80 of the container through port 8080 on the host. After starting, verify that the container is running and the ports are successfully mapped.
+
+    Repeat the creation of the Docker image for Nginx based on the Debian base debian:11-slim, but this time using a Dockerfile. Name the image nginx-product-host.
+
+    Create a container from the newly created image, name it nginx-product-host-container, and expose port 80 of the container through port 8081 on the host. After starting, verify that the container is active and ports are properly mapped.
+
+    Manually copy the products.txt file from the host into the /var/www/html/ folder of both containers (nginx-product-host-container, nginx-product-host-i-container) using the docker cp command.
+
+    Using one of the commands wget or curl from the host, verify whether the products.txt file is accessible at both locations:
+
+        http://localhost:8080/products.txt
+
+        http://localhost:8081/products.txt
+        If successful, the requests should return HTTP status code 200 and download the file to the local directory if the -o option is not set.
+
+    If the previous steps were implemented successfully, stop and remove both containers: nginx-product-host-container and nginx-product-host-i-container.
+
+    Create a new directory on the host named html. Copy the products.txt file into the newly created directory.
+
+    Create and start the nginx-product-host-container, but this time map a volume so that the newly created htmldirectory on the host maps to the /var/www/html/ path inside the container.
+
+        Make sure to expose container port 80 through host port 8081 during startup.
+
+    Verify that the file is accessible at http://localhost:8081/products.txt.
+
+    Containerize a Java application (ProductsManagement.java) using a Dockerfile. The application should display the content of the products.txt file in a more readable way by iterating line-by-line and printing each cell from the row. Each cell should be separated by a semicolon (;).
+
+    Build a new Docker image from the created Dockerfile and name it products-viewer.
+
+    When running the container, map the html directory from the host to /var/www/html/ in the container. Name the container products-viewer-container.
+
+    Check whether the product listing via the Java application is successful.
+
+    Modify the Java code so that the variable path reads from the environment variable PRODUCT_FILE_PATH.
+
+    Stop and remove the products-viewer-container, then start it again, this time providing the value of the environment variable PRODUCT_FILE_PATH using the -e option in the docker run command.
+
+    Check whether the products from the file are successfully listed.
+
+You should place the output from the execution of all commands in the form below.
+
+products.txt
+
+Fridge;$600;5
+TV;$1500;6
+Microwave;$200;10
+
+
+ProductsManagement.java
+
+import java.io.*;
+
+public class ProductsManagement {
+
+    public static void main(String[] args) {
+        String path = "/var/www/html/products.txt";
+        BufferedReader reader = null;
+        String line = null;
+        try {
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
+            while ((line = reader.readLine())!=null) {
+                String[] cells = line.split(";");
+                if (cells.length != 3) {
+                    throw new RuntimeException("Invalid row!");
+                }
+                System.out.printf("Product Name: %s\n", cells[0]);
+                System.out.printf("Product Price: %s\n", cells[1]);
+                System.out.printf("Product Quantity: %s\n", cells[2]);
+                System.out.println("\n");
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
