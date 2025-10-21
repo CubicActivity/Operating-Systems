@@ -1,0 +1,219 @@
+{
+  "main": {
+    "id": "a689472bcfd4247a",
+    "type": "split",
+    "children": [
+      {
+        "id": "ff055cfc7e3d6609",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a86320fa40e8eba1",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Operativni sistemi 2025/kol 1/part1/1. megjuprocesna (nebiten redosled).md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "1. megjuprocesna (nebiten redosled)"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a50a71555ceb2533",
+    "type": "split",
+    "children": [
+      {
+        "id": "08739d122c502674",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9537bc44d61bb39e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "acf6050cc6ddc730",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "fb922a83aa78c80b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 232.5
+  },
+  "right": {
+    "id": "940e19b682d97d83",
+    "type": "split",
+    "children": [
+      {
+        "id": "0574c3c363cc35e6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "81da7693155fb74b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "de5d62093dc598b0",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "a88ff49a51c8e2aa",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "9ceb3dc90a8e28e6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Create new base": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:New drawing": false
+    }
+  },
+  "active": "a86320fa40e8eba1",
+  "lastOpenFiles": [
+    "Operativni sistemi 2025/ISPIT 2025.md",
+    "Operativni sistemi 2025/Ispit 2022.md",
+    "Operativni sistemi 2025/Teorija septemvri 2025/Drawing 2025-09-06 02.02.56.excalidraw.md",
+    "Operativni sistemi 2025/kol 1/part1/5. blokada tabela.md",
+    "Operativni sistemi 2025/kol 1/part1/4. Blokada.md",
+    "Operativni sistemi 2025/kol 1/part1/3. rasporeduvanje.md",
+    "Operativni sistemi 2025/kol 1/part1/2. megjuprocesna.md",
+    "Operativni sistemi 2025/kol 1/part1/1. megjuprocesna (nebiten redosled).md",
+    "Operativni sistemi 2025/kol 2/Drawing 2025-09-04 08.07.47.excalidraw.md",
+    "Operativni sistemi 2025/kol 1/part1/6. 2022 prv kolokvium.md",
+    "Operativni sistemi 2025/kol 1/part2/11. deadlock!! (multithreading).md",
+    "Operativni sistemi 2025/kol 1/part2/10. semaphores (so redosled).md",
+    "Operativni sistemi 2025/kol 1/part2/8. Q0 is RR q=2, Q1 is RR q=4, Q2= FCFS (do kraj).md",
+    "Operativni sistemi 2025/kol 1/part2/6. resource alloc deadlock.md",
+    "Operativni sistemi 2025/kol 1/part2/4. roundrobin q=5ms.md",
+    "Operativni sistemi 2025/kol 1/part2/3. parent of process of ps.md",
+    "Operativni sistemi 2025/kol 1/part2/2. if (fork && fork).md",
+    "Operativni sistemi 2025/kol 1/part2/1. Process Hiearchy.md",
+    "Operativni sistemi 2025/kol 2",
+    "Operativni sis 2025/Vtor kolokvium/Drawing 2025-09-04 08.07.47.excalidraw.md",
+    "Operativni sis 2025/Vtor kolokvium",
+    "Operativni sis 2025/Buttfucking of septemvri/Drawing 2025-09-06 02.02.56.excalidraw.md",
+    "Operativni sistemi 2025/Teorija septemvri 2025",
+    "Pasted Image 20250906022650_553.png",
+    "Pasted Image 20250906021305_642.png",
+    "Pasted Image 20250906021017_596.png",
+    "Pasted Image 20250906020638_567.png",
+    "Pasted Image 20250906020502_510.png",
+    "Pasted Image 20250906020300_233.png",
+    "Operativni sis 2025/Bozji vtor kolokvium/Drawing 2025-09-04 08.07.47.excalidraw.md",
+    "Operativni sis 2025/Buttfucking of septemvri",
+    "Operativni sis 2025/Untitled.md",
+    "Pasted Image 20250905083607_077.png",
+    "Capture2.PNG",
+    "Capture1 random numbers hit or miss_0.PNG",
+    "Capture1 random numbers hit or miss.PNG",
+    "Operativni sistemi 2025/kol 1/part2/9. insane child forking.md",
+    "Untitled 3.base",
+    "Untitled 2.base",
+    "Untitled 1.base",
+    "Untitled.base",
+    "Operativni sis 2025/Bozji vtor kolokvium/Datotechni sistemi.md",
+    "Operativni sistemi 2025/kol 1/part2/7. resource alloc HARD.md",
+    "Operativni sistemi 2025/kol 1/part2/5. X forks to Y, is it run, ready or blocked.md",
+    "Operativni sis 2025/Bozji vtor kolokvium",
+    "Operativni sistemi 2025/kol 1/part1",
+    "Operativni sis 2025/Untitled.canvas",
+    "Untitled.canvas"
+  ]
+}
