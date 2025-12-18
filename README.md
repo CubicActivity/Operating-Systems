@@ -1,1 +1,1 @@
-# Оперативни Системи (F23L2S017) - ФИНКИ 2024/25
+# Exam prep materials for the subject OS
