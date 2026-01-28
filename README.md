@@ -1,1 +1,1 @@
-# Exam prep materials for the subject OS
+# Operating Systems (F23L2S017)
